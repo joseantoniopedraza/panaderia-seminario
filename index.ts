@@ -1,15 +1,17 @@
 import express from "express";
+import appRouter from "./api/interface/index";
+import { buildDependencies } from "./api/dependencies";
+import dotenv from "dotenv";
 
+dotenv.config();
 const app = express();
 const port = 8080;
 
 app.use(express.json());
 
-// Define las rutas antes de app.listen
-app.get("/pedidos", (req, res) => {
-  res.status(200).send("its alive!!");
-});
+app.listen(port, async () => {
+  const dependencies = await buildDependencies();
 
-app.listen(port, () => {
+  app.use(appRouter(dependencies));
   console.log(`Server is running at http://localhost:${port}`);
 });
