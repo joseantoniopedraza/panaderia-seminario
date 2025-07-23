@@ -10,7 +10,7 @@ export const validationRules = () => [
   body("price").isNumeric().notEmpty(),
 ];
 
-const handler = (service: Service) => async (req: Request, res: Response) => {
+export const handler = (service: Service) => async (req: Request, res: Response) => {
   const payload: ProductModel = {
     description: req.body.description,
     name: req.body.name,

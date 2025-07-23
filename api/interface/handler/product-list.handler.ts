@@ -1,7 +1,7 @@
 import { Response, Request, Router } from "express";
 import { Service } from "../../app/products-list";
 
-const handler = (service: Service) => async (req: Request, res: Response) => {
+export const handler = (service: Service) => async (req: Request, res: Response) => {
   const response = await service.findAll()();
   return res.status(200).send(response);
 };

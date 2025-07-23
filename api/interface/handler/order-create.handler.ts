@@ -10,7 +10,7 @@ export const validationRules = () => [
   body("products").isArray().notEmpty(),
 ];
 
-const handler = (service: Service) => async (req: Request, res: Response) => {
+export const handler = (service: Service) => async (req: Request, res: Response) => {
   const payload: OrderModel = {
     client: req.body.client,
     total: req.body.total,
