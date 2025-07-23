@@ -16,7 +16,7 @@ const handler = (service: Service) => async (req: Request, res: Response) => {
     total: req.body.total,
     products: req.body.products,
   } as OrderModel;
-  console.log(payload)
+
   const response = await service.create()(payload);
   return res.status(200).send(response);
 };

@@ -17,7 +17,6 @@ export function findAll(this: Service) {
       });
 
       for (const orderProduct of orderProducts) {
-        console.log(orderProduct.get({ plain: true }));
         const product = await this.d.productTrxModel.findOne({
           where: { id: orderProduct.get({ plain: true }).productId },
         });
