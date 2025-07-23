@@ -1,0 +1,29 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.validationRules = void 0;
+const express_1 = require("express");
+const validate_req_middleware_1 = require("../middlewares/validate-req.middleware");
+const express_validator_1 = require("express-validator");
+const validationRules = () => [
+    (0, express_validator_1.body)("name").isString().notEmpty(),
+    (0, express_validator_1.body)("description").isString().notEmpty(),
+    (0, express_validator_1.body)("price").isNumeric().notEmpty(),
+];
+exports.validationRules = validationRules;
+const handler = (service) => async (req, res) => {
+    const payload = {
+        description: req.body.description,
+        name: req.body.name,
+        price: req.body.price,
+    };
+    const response = await service.create()(payload);
+    return res.status(200).send(response);
+};
+exports.default = (service) => {
+    const router = (0, express_1.Router)();
+    router.use((0, exports.validationRules)());
+    router.use(validate_req_middleware_1.validate);
+    router.use(handler(service));
+    return router;
+};
+//# sourceMappingURL=product-create.handler.js.map

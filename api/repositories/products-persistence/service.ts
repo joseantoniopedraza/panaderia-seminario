@@ -1,7 +1,7 @@
 import { buildProductTrxSqlModel } from "../../domain/sql/product-sql";
 import { dependencies, Service } from "./entities";
 import { create } from "./functions/create";
-
+import { findAll } from "./functions/find-all";
 export function newService(d: dependencies): Service {
   const productTrxModel = buildProductTrxSqlModel(d.sqlClient);
 
@@ -11,5 +11,6 @@ export function newService(d: dependencies): Service {
       productTrxModel,
     },
     create,
+    findAll,
   };
 }
