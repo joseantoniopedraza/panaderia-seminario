@@ -9,6 +9,8 @@ const createClient = () => {
     host: process.env.PGSQL_DB_HOST || "",
   };
 
+  console.log(config);
+
   return new Sequelize(config.database, config.username, config.password, {
     host: config.host,
     dialect: "postgres",
