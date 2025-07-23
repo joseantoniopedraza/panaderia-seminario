@@ -12,6 +12,7 @@ export type iDependencies = {
 
 export interface Service {
   d: iDependencies;
+  findAll: (this: Service) => () => Promise<Array<ProductModel | undefined>>;
   create: (
     this: Service
   ) => (product: ProductModel) => Promise<ProductModel | undefined>;
