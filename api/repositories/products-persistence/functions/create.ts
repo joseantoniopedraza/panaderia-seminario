@@ -4,7 +4,6 @@ import { Service } from "../entities";
 export function create(this: Service) {
   return async (product: ProductModel): Promise<ProductModel | undefined> => {
     
-    await this.d.sqlClient.sync();
     const productTrx: ProductModel = {
       name: product.name,
       description: product.description,

@@ -29,3 +29,5 @@ export const buildProductTrxSqlModel = (sqlCLient: Sequelize) =>
       defaultValue: DataTypes.NOW,
     },
   });
+
+  

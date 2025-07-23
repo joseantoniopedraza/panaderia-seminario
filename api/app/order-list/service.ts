@@ -1,20 +1,16 @@
-
 import { OrderModel } from "../../domain/orders";
 import { dependencies, Service } from "./entities";
 
 export function newService(d: dependencies): Service {
   return {
     d,
-    create,
+    findAll,
   };
 }
 
-export function create(this: Service) {
-  return async (
-    params: OrderModel
-  ): Promise<OrderModel | undefined> => {
-    
-    const result = await this.d.ordersPersistence.create()(params);
+export function findAll(this: Service) {
+  return async (id: number): Promise<Array<OrderModel | undefined>> => {
+    const result = await this.d.ordersPersistence.findAll()(id);
 
     return result;
   };

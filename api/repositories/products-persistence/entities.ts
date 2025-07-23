@@ -2,16 +2,12 @@ import { ProductModel } from "../../domain/products";
 import { Model, ModelStatic, Sequelize } from "sequelize";
 
 export type dependencies = {
-  sqlClient: Sequelize;
+  productTrxModel: ModelStatic<Model>;
 };
 
-export type iDependencies = {
-  productTrxModel: ModelStatic<Model>;
-  sqlClient: Sequelize;
-};
 
 export interface Service {
-  d: iDependencies;
+  d: dependencies;
   findAll: (this: Service) => () => Promise<Array<ProductModel | undefined>>;
   create: (
     this: Service

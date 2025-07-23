@@ -2,7 +2,7 @@ import { DataTypes, Sequelize } from "sequelize";
 
 // pedido_productos(pedido_id, producto_id, cantidad)
 export const buildOrderProductTrxSqlModel = (sqlCLient: Sequelize) =>
-  sqlCLient.define("OrderTrx", {
+  sqlCLient.define("OrderProductTrx", {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,

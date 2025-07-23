@@ -7,14 +7,16 @@ import { OrderModel } from "../../domain/orders";
 export const validationRules = () => [
   body("client").isString().notEmpty(),
   body("total").isNumeric().notEmpty(),
+  body("products").isArray().notEmpty(),
 ];
 
 const handler = (service: Service) => async (req: Request, res: Response) => {
   const payload: OrderModel = {
     client: req.body.client,
     total: req.body.total,
+    products: req.body.products,
   } as OrderModel;
-
+  console.log(payload)
   const response = await service.create()(payload);
   return res.status(200).send(response);
 };
